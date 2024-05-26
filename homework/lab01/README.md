@@ -46,7 +46,7 @@ Spine1
       4 ip address 10.2.1.2/31
       5 interface ethernet2
       6 ip address 10.2.1.0/31
-      7 interface ethernet2
+      7 interface ethernet3
       8 ip address 10.2.1.4/31
       
 Spine2    
@@ -57,7 +57,7 @@ Spine2
       4 ip address 10.2.2.1/31
       5 interface ethernet2
       6 ip address 10.2.2.0/31
-      7 interface ethernet2
+      7 interface ethernet3
       8 ip address 10.2.2.4/31
 
 Leaf1
