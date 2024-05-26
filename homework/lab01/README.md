@@ -37,3 +37,14 @@
 ![Схема сети](img2.png)
 
 ### Настройки оборудования
+
+Spine1
+    1 interface loopback1
+    2 ip address 10.0.1.0/32
+    3 interface ethernet1 
+    4 ip address 10.2.1.2/31
+    5 interface ethernet2
+    6 ip address 10.2.1.0/31
+    7 interface ethernet2
+    8 ip address 10.2.1.4/31
+Spine2    
