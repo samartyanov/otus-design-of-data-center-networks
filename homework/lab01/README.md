@@ -1,36 +1,34 @@
-### Router-on-a-Stick Inter-VLAN Routing
+  # Проектирование адресного пространства
 
-### Цели
-- Part 1: Build the Network and Configure Basic Device Settings
-- Part 2: Create VLANs and Assign Switch Ports
-- Part 3: Configure an 802.1Q Trunk between the Switches
-- Part 4: Configure Inter-VLAN Routing on the Router
-- Part 5: Verify Inter-VLAN Routing is working
+## Цель:
+- Собрать схему CLOS;
+- Распределить адресное пространство;
 
-### Реализовать схему
+## Описание/Пошаговая инструкция выполнения домашнего задания:
 
-![img_19.png](router_on_a_stick_scheme.png)
+1) Соберете топологию CLOS, как на схеме:
+2) Распределите адресное пространство для Underlay сети
+3) Зафиксируете в документации на github адресное пространство, схему сети, настройки
 
-### Таблица адресов
+## Решение
 
-|Device|Interface|IP Address|Subnet Mask|Default Gateway
-|---|---|---|---|---|
-S1|VLAN3|192.168.3.11|255.255.255.0|192.168.3.1
-S2|VLAN3|192.168.3.12|255.255.255.0|192.168.3.1
-R3|e0/0.3|192.168.3.1|255.255.255.0|N/A|
--|e0/0.4|192.168.4.1|255.255.255.0|N/A|
--|e0/0.8|N/A|N/A|N/A|
-PC-A|NIC|192.168.3.3|255.255.255.0|192.168.3.1
-PC-B|NIC|192.168.4.3|255.255.255.0|192.168.4.1
+### Распределение адресного пространства
 
-### VLAN Таблица
-
-|VLAN|Название|Связанные интерфейсы|Описание
-|---|---|---|---|
-3|Managment|S1:VLAN3, S1:e0/3, S2:VLAN3|Управление свичами и роутерами по ssh/telnet
-4|Operations|S2:VLAN4, S2:e0/2|Конечные пользователи
-7|ParkingLot|S1:e0/2, S2:e0/0,e0/3|Парковка погашенных портов, во имя security
-8|Native|N/A|Нетегированный трафик 802.1Q, by default это VLAN1
+    IP plan
+    DC 1 [0...7]
+    Loopback
+    Spine 1 Lo1 - 10.0.1.0/32
+    Spine 2 Lo1 - 10.0.2.0/32
+    Leaf 1 Lo2 - 10.1.0.1/32
+    Leaf 2 Lo2 - 10.1.0.2/32
+    Leaf 3 Lo2 - 10.1.0.3/32
+    Service
+    p2p Spine 1 <- -> Leaf 1 - 10.2.1.0/31
+    p2p Spine 1 <- -> Leaf 2 - 10.2.1.2/31
+    p2p Spine 1 <- -> Leaf 3 - 10.2.1.4/31
+    p2p Spine 2 <- -> Leaf 1 - 10.2.2.0/31
+    p2p Spine 2 <- -> Leaf 2 - 10.2.2.1/31
+    p2p Spine 2 <- -> Leaf 3 - 10.2.2.4/31
 
 
 ### Введение
