@@ -50,3 +50,27 @@ Spine1
       8 ip address 10.2.1.4/31
       
 Spine2    
+
+      1 interface loopback1
+      2 ip address 10.0.2.0/32
+      3 interface ethernet1 
+      4 ip address 10.2.2.1/31
+      5 interface ethernet2
+      6 ip address 10.2.2.0/31
+      7 interface ethernet2
+      8 ip address 10.2.2.4/31
+
+Leaf1
+
+      1 interface loopback2
+      2 ip address 10.1.0.1/32
+
+Leaf2
+
+      1 interface loopback2
+      2 ip address 10.1.0.2/32
+
+Leaf3
+
+      1 interface loopback2
+      2 ip address 10.1.0.3/32
