@@ -75,8 +75,20 @@ Leaf2
 
       1 interface loopback2
       2 ip address 10.1.0.2/32
+      3 interface ethernet1 
+      4 ip address unnumbered loopback2
+      5 interface ethernet2
+      6 ip address unnumbered loopback2
+      7 interface ethernet3
+      8 ip address unnumbered loopback2
 
 Leaf3
 
       1 interface loopback2
       2 ip address 10.1.0.3/32
+      3 interface ethernet1 
+      4 ip address unnumbered loopback2
+      5 interface ethernet2
+      6 ip address unnumbered loopback2
+      7 interface ethernet3
+      8 ip address unnumbered loopback2
