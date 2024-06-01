@@ -92,7 +92,7 @@ Leaf3
       5 Leaf3(config-router-ospf)#network 10.2.2.4 0.0.0.1 area 0
       6 Leaf3(config-router-ospf)#router-id 10.1.0.3
       
-### Проверка настройки протокола OSPF
+### Проверка работы протокола OSPF
 
 
 Spine1
