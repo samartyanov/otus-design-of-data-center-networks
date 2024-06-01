@@ -16,8 +16,8 @@
 ### План работы
 
 Топология и распределение адресного пространства берутся из [lab01](https://github.com/samartyanov/otus-design-of-data-center-networks/tree/main/homework/lab01#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%D0%BF%D0%BE%D1%88%D0%B0%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B4%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B5%D0%B3%D0%BE-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F)
-Сеть типа точка-точка состоит из пары маршрутизаторов. В сетях типа точка-точка маршрутизатор обнаруживает соседей, используя рассылку пакетов hello по мультикасту на адрес 224.0.0.5 (все маршрутизаторы OSPF). Как только появляется возможность передачи данных, маршрутизаторы немедленно устанавливают соседство, не проводя выборов DR и BDR (так как только 2 участника – в них нет необходимости). 
-Интервалы OSPF по умолчанию для соединений типа точка-точка составляют 10 секунд для hello и 40 секунд для dead. 
+После выполняется настройка OSPF на Spine и Leaf и проверка.
+Интервалы OSPF по умолчанию: 10 секунд для hello и 40 секунд для dead. 
 
 ### Распределение адресного пространства
 
@@ -45,52 +45,50 @@
 
 Spine1
 
-      1 interface loopback1
-      2 ip address 10.0.1.0/32
-      3 interface ethernet1 
-      4 ip address 10.2.1.2/31
-      5 interface ethernet2
-      6 ip address 10.2.1.0/31
-      7 interface ethernet3
-      8 ip address 10.2.1.4/31
+      1 Spine1(config)#ip routing
+      2 Spine1(config)#router ospf 1
+      3 Spine1(config-router-ospf)#network 10.0.1.0 0.0.0.0 area 0
+      4 Spine1(config-router-ospf)#network 10.2.1.2 0.0.0.1 area 0
+      5 Spine1(config-router-ospf)#network 10.2.1.0 0.0.0.1 area 0
+      6 Spine1(config-router-ospf)#network 10.2.1.4 0.0.0.1 area 0
+      7 Spine1(config-router-ospf)#router-id 10.0.1.0
       
 Spine2    
 
-      1 interface loopback1
-      2 ip address 10.0.2.0/32
-      3 interface ethernet1 
-      4 ip address 10.2.2.2/31
-      5 interface ethernet2
-      6 ip address 10.2.2.0/31
-      7 interface ethernet3
-      8 ip address 10.2.2.4/31
+      1 Spine2(config)#ip routing
+      2 Spine2(config)#router ospf 1
+      3 Spine2(config-router-ospf)#network 10.0.2.0 0.0.0.0 area 0
+      4 Spine2(config-router-ospf)#network 10.2.2.2 0.0.0.1 area 0
+      5 Spine2(config-router-ospf)#network 10.2.2.0 0.0.0.1 area 0
+      6 Spine2(config-router-ospf)#network 10.2.2.4 0.0.0.1 area 0
+      7 Spine2(config-router-ospf)#router-id 10.0.2.0
 
 Leaf1
 
-      1 interface loopback2
-      2 ip address 10.1.0.1/32
-      3 interface ethernet1 
-      4 ip address 10.2.1.1/31
-      5 interface ethernet2
-      6 ip address 10.2.2.1/31
+      1 Leaf1(config)#ip routing
+      2 Leaf1(config)#router ospf 1
+      3 Leaf1(config-router-ospf)#network 10.1.0.1 0.0.0.0 area 0
+      4 Leaf1(config-router-ospf)#network 10.2.1.0 0.0.0.1 area 0
+      5 Leaf1(config-router-ospf)#network 10.2.2.0 0.0.0.1 area 0
+      6 Leaf1(config-router-ospf)#router-id 10.1.0.1
       
 
 Leaf2
 
-      1 interface loopback2
-      2 ip address 10.1.0.2/32
-      3 interface ethernet1 
-      4 ip address 10.2.2.3/31
-      5 interface ethernet2
-      6 ip address 10.2.1.3/31
+      1 Leaf2(config)#ip routing
+      2 Leaf2(config)#router ospf 1
+      3 Leaf2(config-router-ospf)#network 10.1.0.2 0.0.0.0 area 0
+      4 Leaf2(config-router-ospf)#network 10.2.2.2 0.0.0.1 area 0
+      5 Leaf2(config-router-ospf)#network 10.2.1.2 0.0.0.1 area 0
+      6 Leaf2(config-router-ospf)#router-id 10.1.0.2
       
 
 Leaf3
 
-      1 interface loopback2
-      2 ip address 10.1.0.3/32
-      3 interface ethernet1 
-      4 ip address 10.2.1.5/31
-      5 interface ethernet2
-      6 ip address 10.2.2.5/31
+      1 Leaf3(config)#ip routing
+      2 Leaf3(config)#router ospf 1
+      3 Leaf3(config-router-ospf)#network 10.1.0.3 0.0.0.0 area 0
+      4 Leaf3(config-router-ospf)#network 10.2.1.4 0.0.0.1 area 0
+      5 Leaf3(config-router-ospf)#network 10.2.2.4 0.0.0.1 area 0
+      6 Leaf3(config-router-ospf)#router-id 10.1.0.3
       
