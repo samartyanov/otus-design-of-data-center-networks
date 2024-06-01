@@ -97,36 +97,36 @@ Leaf3
 
 Spine1
 
-Spine1#sh ip route
+      Spine1#sh ip route
 
-VRF: default
-Codes: C - connected, S - static, K - kernel, 
-       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
-       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
-       N2 - OSPF NSSA external type2, B - Other BGP Routes,
-       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
-       I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
-       A O - OSPF Summary, NG - Nexthop Group Static Route,
-       V - VXLAN Control Service, M - Martian,
-       DH - DHCP client installed default route,
-       DP - Dynamic Policy Route, L - VRF Leaked,
-       G  - gRIBI, RC - Route Cache Route
+      VRF: default
+      Codes: C - connected, S - static, K - kernel, 
+             O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+             E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+             N2 - OSPF NSSA external type2, B - Other BGP Routes,
+             B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
+             I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
+             A O - OSPF Summary, NG - Nexthop Group Static Route,
+             V - VXLAN Control Service, M - Martian,
+             DH - DHCP client installed default route,
+             DP - Dynamic Policy Route, L - VRF Leaked,
+             G  - gRIBI, RC - Route Cache Route
 
-Gateway of last resort is not set
+      Gateway of last resort is not set
 
- C        10.0.1.0/32 is directly connected, Loopback1
- O        10.0.2.0/32 [110/30] via 10.2.1.3, Ethernet1
+         C        10.0.1.0/32 is directly connected, Loopback1
+         O        10.0.2.0/32 [110/30] via 10.2.1.3, Ethernet1
                                via 10.2.1.1, Ethernet2
                                via 10.2.1.5, Ethernet3
- O        10.1.0.1/32 [110/20] via 10.2.1.1, Ethernet2
- O        10.1.0.2/32 [110/20] via 10.2.1.3, Ethernet1
- O        10.1.0.3/32 [110/20] via 10.2.1.5, Ethernet3
- C        10.2.1.0/31 is directly connected, Ethernet2
- C        10.2.1.2/31 is directly connected, Ethernet1
- C        10.2.1.4/31 is directly connected, Ethernet3
- O        10.2.2.0/31 [110/20] via 10.2.1.1, Ethernet2
- O        10.2.2.2/31 [110/20] via 10.2.1.3, Ethernet1
- O        10.2.2.4/31 [110/20] via 10.2.1.5, Ethernet3
+         O        10.1.0.1/32 [110/20] via 10.2.1.1, Ethernet2
+         O        10.1.0.2/32 [110/20] via 10.2.1.3, Ethernet1
+         O        10.1.0.3/32 [110/20] via 10.2.1.5, Ethernet3
+         C        10.2.1.0/31 is directly connected, Ethernet2
+         C        10.2.1.2/31 is directly connected, Ethernet1
+         C        10.2.1.4/31 is directly connected, Ethernet3
+         O        10.2.2.0/31 [110/20] via 10.2.1.1, Ethernet2
+         O        10.2.2.2/31 [110/20] via 10.2.1.3, Ethernet1
+         O        10.2.2.4/31 [110/20] via 10.2.1.5, Ethernet3
      
       
 Spine2    
