@@ -131,7 +131,7 @@ Spine1
       
 Spine2    
 
-      Spine2(config)#sh ip route isis
+         Spine2(config)#sh ip route isis
       
       VRF: default
       Codes: C - connected, S - static, K - kernel, 
